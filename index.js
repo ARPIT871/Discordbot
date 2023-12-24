@@ -1,0 +1,20 @@
+const { Client, GatewayIntentBits } = require("discord.js");
+
+
+
+const client = new Client({ intents: [GatewayIntentBits.Guilds,GatewayIntentBits.GuildMessages,GatewayIntentBits.MessageContent] });
+
+client.on('messageCreate', (message) => {
+  console.log(message.content);
+});
+
+
+client.on('interactionCreate', async interaction => {
+  if (!interaction.isChatInputCommand()) return;
+
+  if (interaction.commandName === 'ping') {
+    await interaction.reply('Pong!');
+  }
+});
+
+client.login('MTE4MDM1Nzk5MDY2NzI3MjMyMg.GGolVb.z5qySuMfh2KP8-sSks1TE7dxiBdzyLviHIpeI0');
